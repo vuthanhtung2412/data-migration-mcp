@@ -1,0 +1,36 @@
+[env]
+PYTHONPATH = "{{config_root}}"
+_.python.venv = { path = ".venv", create = true }
+
+[tools]
+python = "3.12"
+uv = "0.7"
+
+[tasks.venv]
+description = "Install dependencies"
+alias = "venv"
+run = "uv venv"
+
+[tasks.install]
+description = "Install dependencies"
+alias = "i"
+run = "uv pip install -r requirements.txt"
+
+[tasks.freeze]
+description = "freeze to requirements.txt"
+run = "uv pip freeze > requirements.txt"
+
+[tasks.migrate]
+description = "main db migration"
+run = "python models.py"
+
+[tasks.mock]
+description = "Add mock data"
+run = "python mock.py"
+
+[tasks.start]
+description = "start MCP server"
+run = "fastmcp run server.py:mcp --transport sse --port 8000 --host 0.0.0.0"
+
+[settings]
+python.uv_venv_auto = true

@@ -1,0 +1,7 @@
+procs:
+  start_server:
+    shell: "mise run start"
+    cwd: "./back"
+  inspector:
+    shell: "npx @modelcontextprotocol/inspector"
+
