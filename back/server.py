@@ -10,6 +10,10 @@ import os
 
 mcp: FastMCP = FastMCP(name="MyRemoteServer")
 
+@mcp.tool(description="ping")
+def ping() -> str:
+    return "pong"
+
 
 def read_prompt_md(filename):
     path = os.path.join(
